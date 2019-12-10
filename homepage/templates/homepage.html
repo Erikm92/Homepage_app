@@ -1,0 +1,276 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>HomePage</title>
+
+    <link rel="stylesheet"  href="{% static 'homepage/css/bootstrap.min.css' %}">
+    <link rel="stylesheet"  href="{% static 'homepage/css/cover.css'%}">
+    <link rel="stylesheet"  href="{% static 'homepage/css/original.css'%}">
+    <link  rel="stylesheet" href="{% static 'homepage/css/product.css'%}">
+    <script src="{% static 'homepage/js/skycons.js'%}"></script> 
+    <script src="{% static 'homepage/js/app.js'%}"></script>
+
+   
+  </head>
+  <body class="text-center">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">Home Page</h3>
+      <nav class="nav nav-masthead justify-content-center">
+        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link" href="#">Dashboard</a>
+      </nav>
+    </div>
+  </header>
+
+<!--<main role="main" class="inner cover">
+    <h1 class="cover-heading">Cover your page.</h1>
+    <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
+    <p class="lead">
+      <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+    </p>
+  </main> <!-->
+  
+
+<div class="d-md-flex flex-md-equal w-100 my-md-3 pl-md-3">
+  <div class="bg-dark mr-md-3 px-md-3 text-center text-white overflow-hidden">
+    <div class="my-3 py-3">
+      <h2 class="display-5">Todo List</h2>
+      
+    </div>
+    <div class="bg-light mx-auto" style="width: 80%; height: 810px; border-radius: 15px 15px 15px 15px;">
+    <div class="container-fluid" >
+			
+		
+				<div>
+					<h3 class="container_one">Add Items Here</h3>
+					
+					<form action="{% url 'add' %}" method="POST" role="form" autocomplete="off">
+            {%  csrf_token  %}
+					
+						<div class="form-group">
+							<div class="input-group">
+							  
+							  
+            {{form.text}}
+
+								  <button type="submit" class="btn btn-outline-secondary" id="add-btn">Add</button>
+							  
+							</div>
+						</div>
+					</form>
+
+				
+
+					<ul class="list-group t20">
+
+            {% for todo in todo_list %}
+                {% if todo.complete %}
+
+            	  <li class="listcompleted list-group-item listsetting ">{{ todo.text }}</li>
+                {% else %}
+                <a href="{% url 'complete' todo.id %}"><li class="list-group-item listsetting">{{ todo.text }}</li>
+                </a>
+                {% endif %}
+
+            {% endfor %}
+				
+					</ul>
+
+	<div class="row t10">
+						<div class="col-lg-12">
+							<div class="btn-toolbar">
+								<div class="btn-group ">
+
+								<a href="{% url 'deletecomplete' %}"	button type="button" class="btn btn-outline-secondary btnpadding">
+										<i class="glyphicon glyphicon-trash"></i> DELETE COMPLETED
+									</button>
+                </a>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+    </div>
+  </div>
+   <div class="bg-dark mr-md-3 px-md-4 text-center text-white ">
+    <div class="my-3 p-3">
+
+    <h2 class="display-5">Weather</h2>
+    <div class="location">
+    <div class="temperature">
+      <h3 class="location-timezone">Timezone</h3>
+        
+      <div class="degree-section">
+      <canvas class="icon" width="128" height="128"></canvas>
+        <h2 class="temperature-degree"></h2>
+        <span>F</span>
+      <div class="temperature-description"></div>
+       </div> 
+      </div>  
+    </div>
+
+    </div>
+    <div class="bg-dark shadow-sm mx-auto" style="width: 100%; height: 650px; border-radius: 21px 21px 0 0;">
+    
+    <h2 class="display-5" "colheaders">Index:</a></h2>
+    <div class="index-section border-box-index">
+    
+    {% if a > 0 %}
+    
+    <div class="arrow-up index-col4">
+      <a href="https://quotes.wsj.com/index/US/DOW%20JONES%20GLOBAL/DJIA" target="_blank" class="display-6 displayindex">Dow Jones: {{a}}%</a>
+     </div>
+     {% else %}
+    <div class="arrow-down index-col4">
+     <a href="https://quotes.wsj.com/index/US/DOW%20JONES%20GLOBAL/DJIA"target="_blank" class="display-6 displayindex">Dow Jones: {{a}}%</a>
+     </div>
+    {% endif %}
+    
+    {% if b > 0 %}
+    
+    <div class="arrow-up index-col4">
+     <a href="https://quotes.wsj.com/index/US/S&P%20US/SPX?mod=md_home_overview_quote"target="_blank" class="display-6 displayindex">S&P500: {{b}}%</a>
+     </div>
+     {% else %}
+    <div class="arrow-down index-col4">
+     <a href="https://quotes.wsj.com/index/US/S&P%20US/SPX?mod=md_home_overview_quote"target="_blank" class="display-6 displayindex">S&P500: {{b}}%</a>
+     </div>
+    {% endif %}
+
+    {% if c > 0 %}
+    <div class="arrow-up index-col4">
+     <a href="https://quotes.wsj.com/index/US/XNAS/COMP?mod=md_home_overview_quote"target="_blank" class="display-6 displayindex">Nasdaq: {{c}}%</a>
+     </div>
+  {% else %}
+     <div class="arrow-down index-col4">
+     <a href="https://quotes.wsj.com/index/US/XNAS/COMP?mod=md_home_overview_quote"target="_blank" class="display-6 displayindex">Nasdaq: {{c}}%</a>
+     </div>
+    {% endif %}
+
+     {% if d > 0 %}
+    <div class="arrow-up index-col4">
+     <a href="https://quotes.wsj.com/index/RUT?mod=searchresults_companyquotes" target="_blank" class="display-6 displayindex">Russell 2000: {{d}}%</a>
+     </div>
+ {% else %}
+     <div class="arrow-down index-col4">
+          <a href="https://quotes.wsj.com/index/RUT?mod=searchresults_companyquotes" target="_blank" class="display-6 displayindex">Russell 2000: {{d}}%</a>
+     </div>
+    {% endif %}
+</div>
+
+<h2 class="display-5" "colheaderstwo">Other:</h2>
+    <div class="index-section border-box-index">
+    {% if e > 0 %}
+    <div class="arrow-up index-col4">
+        <a href="https://quotes.wsj.com/futures/CRUDE%20OIL%20-%20ELECTRONIC" target="_blank" class="display-6 displayindex">Oil: {{e}}%</a>
+     </div>
+  {% else %}
+     <div class="arrow-down index-col4">
+        <a href="https://quotes.wsj.com/futures/CRUDE%20OIL%20-%20ELECTRONIC" target="_blank" class="display-6 displayindex">Oil: {{e}}%</a>
+     </div>
+    {% endif %}
+    
+    {% if f > 0 %}
+    <div class="arrow-up index-col4">
+     <a href="https://quotes.wsj.com/futures/GC00?mod=md_home_overview_quote" target="_blank" class="display-6 displayindex">Gold: {{f}}%</a>
+     </div>
+  {% else %}
+     <div class="arrow-down index-col4">
+     <a href="https://quotes.wsj.com/futures/GC00?mod=md_home_overview_quote" target="_blank" class="display-6 displayindex">Gold: {{f}}%</a>
+     </div>
+    {% endif %}
+
+    
+
+    {% if h > 0 %}
+    <div class="arrow-up index-col4">
+     <a href="https://quotes.wsj.com/index/VIX" target="_blank" class="display-6 displayindex">Vix: {{h}}%</a>
+     </div>
+  {% else %}
+     <div class="arrow-down index-col4">
+        <a href="https://quotes.wsj.com/index/VIX" target="_blank" class="display-6 displayindex">Vix: {{h}}%</a>
+     </div>
+    {% endif %}
+   
+ {% if g %}
+    <div class="index-col4">
+     <a href="https://quotes.wsj.com/bond/BX/TMUBMUSD10Y" target="_blank" class="display-6 displayindex">Ten Yr Yield: {{g}} </a>
+     </div>
+  {% endif %}
+  </div>
+
+<div class="bg-light" style="margin-top:1%; content:''; float:left; width: 48%; height: 440px; border-radius: 15px 15px 15px 15px;">
+
+    <div class="container-fluid" >
+    <h2 class="container_one">Calendar</h2>
+<iframe src="https://calendar.google.com/calendar/embed?height=600&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FNew_York&amp;src=ZXJpay5tYXJ0aW5lekBlc3NlbmNlZ2xvYmFsLmNvbQ&amp;color=%2322AA99&amp;showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA" style="border-width:0" width="330" height="330" frameborder="0" scrolling="no"></iframe></div>
+</div>
+
+<div class="bg-light" style="margin-top:1%; content:''; float:right; width: 48%; height: 440px; border-radius: 15px 15px 15px 15px;">
+    <div class="container-fluid" >
+    <h2 class="container_one">WSJ Articles</h2>
+<p class="label">Markets</p>
+<ul class="ulback">
+{% if i %}
+  <li><div class="index-col4">
+  <a href="{{l}}" target="_blank" class="articlesmarket"> {{i}} </a>
+     </div></li>
+  {% endif %}
+
+  {% if j %}
+  <li><div class="index-col4">
+  <a href="{{m}}" target="_blank" class="articlesmarket"> {{j}} </a>
+     </div></li>
+  {% endif %}
+  {% if k %}
+  <li><div class="index-col4">
+  <a href="{{n}}" target="_blank" class="articlesmarket">{{k}} </a>
+     </div></li>
+  {% endif %}
+
+</ul>
+<p class="label">Tech</p>
+  <ul class="ulback">
+{% if o %}
+  <li><div class="index-col4">
+  <a href="{{r}}" target="_blank" class="articlesmarket">{{o}} </a>
+     </div></li>
+  {% endif %}
+
+  {% if p %}
+  <li><div class="index-col4">
+  <a href="{{s}}" target="_blank" class="articlesmarket">{{p}} </a>
+     </div></li>
+  {% endif %}
+  {% if q %}
+  <li><div class="index-col4">
+  <a href="{{t}}" target="_blank" class="articlesmarket">{{q}} </a>
+     </div></li>
+  {% endif %}
+
+</ul>
+ 
+</div>
+</div>
+				
+   
+    </div>
+  </div>
+</div>
+
+  <footer>
+  </footer>
+</div>
+</body>
+</html>
