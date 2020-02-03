@@ -1,6 +1,6 @@
 Home Page Application 
 
-Application was bui;t for the purpose of learning Django. 
+Application was built for the purpose of learning Django. 
 It was hosted using PythonAnywhere
 
 Originally the application was web scraping data from Wallstreet journal website for personal purpose.
