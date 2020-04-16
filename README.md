@@ -3,7 +3,7 @@ Home Page Application
 Application was built for the purpose of learning Django. 
 It was hosted using PythonAnywhere
 
-Originally the application was web scraping data from Wallstreet journal website for personal purpose.
+Originally the application was web scraping data from Wallstreet journal website for personal use.
 Had to remove this due to using a free host with Pythonanywhere. code is still included.
 
 What the application does?
